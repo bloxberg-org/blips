@@ -13,7 +13,7 @@ and managed by the community via github version control in the
 built and published by the maintainers with [mkdocs](http://www.mkdocs.org/).
 
 If you have some basic command line skills you can build and run the 
-[cips website](https://bips.bloxberg.org) on your own computer. Make sure 
+[BIPs website](https://bips.bloxberg.org) on your own computer. Make sure 
 you have the [Git](https://git-scm.com/) and [Python](https://www.python.org/) 
 installed on your system and  follow these steps on the command line:
 
