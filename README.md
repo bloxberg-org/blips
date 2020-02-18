@@ -2,7 +2,7 @@
 
 | ID                         | Title                  | Type   | Status |
 | ------------------------------ | ---------------------- | ------ | ------ |
-| [BIP-0001](bips/bip-0001-researchcertificate.md)        | Research Data Certificates | Stream | ![Draft](http://rfc.unprotocols.org/spec:2/COSS/stable.svg) |
+| [BIP-0001](bips/bip-0001-researchcertificate.md)        | Research Data Certificates | Stream | ![Draft](http://rfc.unprotocols.org/spec:2/COSS/draft.svg) |
 
 ## Why BIPs?
 
