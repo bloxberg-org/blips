@@ -1,0 +1,72 @@
+# Project information
+site_name: 'bloxberg consortium - BIPS'
+site_description: 'bloxberg Blockchain Improvement Proposals'
+site_author: 'bloxberg Consortium'
+site_url: 'https://bips.bloxberg.org'
+
+# Repository
+repo_name: 'bloxberg-org/bips'
+repo_url: 'https://github.com/bloxberg-org/bips'
+edit_uri: 'blob/master/bips/'
+
+# Copyright
+copyright: 'Copyright &copy; 2020 bloxberg Consortium'
+
+# Configuration
+strict: true
+theme:
+  name: 'material'
+  language: 'en'
+  palette:
+    primary: 'blue'
+    accent: 'purple'
+  font:
+    text: 'Roboto'
+    code: 'Roboto Mono'
+
+# Customization
+extra:
+  social:
+    - type: 'github'
+      link: 'https://github.com/bloxberg-org'
+extra_css:
+  - 'styles/bips.css'
+
+# Extensions
+markdown_extensions:
+  - markdown.extensions.abbr
+  - markdown.extensions.admonition
+  - markdown.extensions.codehilite:
+      guess_lang: false
+  - markdown.extensions.def_list
+  - markdown.extensions.footnotes
+  - markdown.extensions.meta
+  - markdown.extensions.toc:
+      permalink: true
+  - pymdownx.arithmatex
+  - pymdownx.betterem:
+      smart_enable: all
+  - pymdownx.caret
+  - pymdownx.critic
+  - pymdownx.details
+  - pymdownx.emoji:
+      emoji_generator: !!python/name:pymdownx.emoji.to_svg
+  - pymdownx.inlinehilite
+  - pymdownx.keys
+  - pymdownx.magiclink
+  - pymdownx.mark
+  - pymdownx.smartsymbols
+  - pymdownx.superfences
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  - pymdownx.tilde
+
+
+# Page tree
+pages:
+  - 'Overview': 'index.md'
+  - 'BIP0001 - bloxberg Research Data Certificates': 'bip-0001-researchcertificate.md'
+
+
+docs_dir: 'bips'
+dev_addr: '127.0.0.1:8001'
