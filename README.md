@@ -2,7 +2,7 @@
 
 | ID                         | Title                  | Type   | Status |
 | ------------------------------ | ---------------------- | ------ | ------ |
-| [BIP-0001](bips/bip-0001-researchcertificate.md)        | Research Data Certificates | Stream | ![Draft](http://rfc.unprotocols.org/spec:2/COSS/draft.svg) |
+| [BIP-0001](blips/bip-0001-researchcertificate.md)        | Research Data Certificates | Stream | ![Draft](http://rfc.unprotocols.org/spec:2/COSS/draft.svg) |
 
 ## Why BIPs?
 
@@ -15,26 +15,26 @@ These can include proposals such as modifications to the governance model, adjus
 
 All **BIPs** are written in [markdown](https://en.wikipedia.org/wiki/Markdown)
 and managed by the community via github version control in the 
-[BIPS repository](https://github.com/bloxberg-org/bips). The markdown content is than 
+[BLIPS repository](https://github.com/bloxberg-org/blips). The markdown content is than 
 built and published by the maintainers with [mkdocs](http://www.mkdocs.org/).
 
 In order to submit a BIP, simply clone the repository and create a PR with a draft of the proposal which will then be assigned a number.
 
 If you have some basic command line skills you can build and run the 
-[BIPs website](https://bips.bloxberg.org) on your own computer. Make sure 
+[BIPs website](https://blips.bloxberg.org) on your own computer. Make sure 
 you have the [Git](https://git-scm.com/) and [Python](https://www.python.org/) 
 installed on your system and  follow these steps on the command line:
 
 ```bash
-git clone https://github.com/bloxberg-org/bips.git
-cd bips
+git clone https://github.com/bloxberg-org/blips.git
+cd blips
 pip install -r requirements.txt
 mkdocs serve
 ```
 
 ## Usage
 
-All BIP documents can be found in the `bips` subfolder of this repository. The 
+All BIP documents can be found in the `blips` subfolder of this repository. The 
 recommended editor for the markdown files is [typora](https://typora.io/). If 
-you have commit rights to the [main repository](https://github.com/bloxberg-org/bips) 
+you have commit rights to the [main repository](https://github.com/bloxberg-org/blips) 
 you can deploy the site with a simple `mkdocs gh-deploy`.

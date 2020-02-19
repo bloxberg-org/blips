@@ -1,13 +1,13 @@
 # Project information
-site_name: 'bloxberg consortium - BIPS'
+site_name: 'bloxberg consortium - BLIPS'
 site_description: 'bloxberg Blockchain Improvement Proposals'
 site_author: 'bloxberg Consortium'
-site_url: 'https://bips.bloxberg.org'
+site_url: 'https://blips.bloxberg.org'
 
 # Repository
-repo_name: 'bloxberg-org/bips'
-repo_url: 'https://github.com/bloxberg-org/bips'
-edit_uri: 'blob/master/bips/'
+repo_name: 'bloxberg-org/blips'
+repo_url: 'https://github.com/bloxberg-org/blips'
+edit_uri: 'blob/master/blips/'
 
 # Copyright
 copyright: 'Copyright &copy; 2020 bloxberg Consortium'
@@ -30,7 +30,7 @@ extra:
     - type: 'github'
       link: 'https://github.com/bloxberg-org'
 extra_css:
-  - 'styles/bips.css'
+  - 'styles/blips.css'
 
 # Extensions
 markdown_extensions:
@@ -68,5 +68,5 @@ pages:
   - 'BIP0001 - bloxberg Research Data Certificates': 'bip-0001-researchcertificate.md'
 
 
-docs_dir: 'bips'
+docs_dir: 'blips'
 dev_addr: '127.0.0.1:8001'
