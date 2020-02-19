@@ -45,24 +45,18 @@ Each certified piece of data is minted as a non-fungible (*Transferable ERC721 c
                 "description": "Array of organizations that are stakeholders in the certified data."
             }
         },
-
-        //https://iscc.codes/features/
         "ISCC": {
             "type": "string",
-            "description": ""
-        
+            "description": "ISCC is an algorithmic identifier generated from the content itself. This currently includes metadata similarity, normalized content similarity, encoded data similarity, and exact data integrity."
         },
         "certificate": {
             "type": "string",
             "description": "a URI pointing to the corresponding data certificate in PDF format. The certificate can be utilized to prove via certified timestamping the data certification time."
         },
-        //URL where the data certified can be downloaded
         "external_url": {
             "type": "string",
             "description": "a URI pointing to the corresponding data file where the data can be downloaded. If provided, the data at the URI should resolve to the same ISCC listed in the metadata.
         }
-
-
     }
 }
 ```
