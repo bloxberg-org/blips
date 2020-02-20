@@ -77,7 +77,7 @@ interface certificateMetadata /* is ERC721 */ {
                 "description": "Array of organizations that are stakeholders in the certified data."
             }
         },
-        "ISCC": {
+        "iscc": {
             "type": "string",
             "required": true,
             "description": "ISCC is an algorithmic identifier generated from the content itself. This currently includes metadata similarity, normalized content similarity, encoded data similarity, and exact data integrity."
@@ -101,16 +101,8 @@ The research data schema offers flexibility in what specific metadata fields are
 In addition, due to the algorithmic design of ISCC, it is possible to see a similarity matching of how data has been modified during the research workflow.
 
 
-
-
 ## Updating
 ISCC - https://iscc.codes/features/
-
-
-
-## Re-Assigning
-
-
 
 ## Validation
 
