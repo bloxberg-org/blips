@@ -10,7 +10,6 @@ In order to standardize and collaborate on various common features in a scientif
 
 These can include proposals such as modifications to the governance model, adjustments to the consensus algorithm, or standardization of specific contracts.
 
-
 ## Working on BLIPs
 
 All **BLIPs** are written in [markdown](https://en.wikipedia.org/wiki/Markdown)

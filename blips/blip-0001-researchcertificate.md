@@ -3,6 +3,7 @@
 | BLIP:     | 0001                                                         |
 | -------- | ------------------------------------------------------------ |
 | Title:   | Research Object Certification                                      |
+| Owner(s):  | James Lawton                                                           |
 | Author(s):  | James Lawton                                                           |
 | Status:  | ![Draft](http://rfc.unprotocols.org/spec:2/COSS/draft.svg) |
 | Created: | 2020-02-18                                                   |
