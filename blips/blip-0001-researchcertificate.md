@@ -19,10 +19,10 @@ Our aim is to standardize the research data certification with respect to what m
 Each certified piece of data is minted as a non-fungible (*Transferable ERC721 compliant or non-transferable) token. Each contract MUST include the ERC721Metadata standard augmented with an additional field that contains the hash of the data object. This is in order to ensure that the dataURI hosted offchain can be resolved to an onchain transaction. The ERC721Metadata is necessary in order to include the information for future identification and locating of the data object.
 
 ```solidity
-/// @title Research Data 
+/// @title Research Object Metadata Extension 
 /// @dev See https://blips.bloxberg.org/blips/
 ///  Note: the ERC-165 identifier for this interface is 0x5b5e139f.
-interface certificateMetadata /* is ERC721 */ {
+interface objectMetadata /* is ERC721 */ {
     /// @notice A descriptive name for a collection of NFTs in this contract
     function name() external view returns (string _name);
 
@@ -42,7 +42,7 @@ interface certificateMetadata /* is ERC721 */ {
 }
 ```
 
-## Schema
+## Metadata JSON Schema
  Each owner of the token is able to augment the tokenURI field to a hosting location of their choosing. Similar to DOI, it is the responsibility of each token owner to update the token URI. The URI may point to a JSON file that conforms to the EIP-1047 Metadata JSON Schema augmented with specific characteristics desirable for use with respect to scientific applications and to ensure compatibility across applications.
 
 ```json
@@ -98,11 +98,7 @@ interface certificateMetadata /* is ERC721 */ {
 
 The research data schema offers flexibility in what specific metadata fields are required to be included. This is for several reasons: 1. Data generated at differ stages of the research cycle, it may not be possible to provide this information. 2. To ensure the protection of sensitive and confidential data that is acquired, analyzed, or processed. However, the required field ISCC, is required in order to ensure subsequent validation of data at a later point in time.
 
-In addition, due to the algorithmic design of ISCC, it is possible to see a similarity matching of how data has been modified during the research workflow.
-
-
-## Updating
-ISCC - https://iscc.codes/features/
+In addition, due to the algorithmic design of [ISCC](https://iscc.codes/), it is possible to see a similarity matching of how data has been modified during the research workflow.
 
 ## Validation
 
