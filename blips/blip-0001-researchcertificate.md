@@ -91,7 +91,7 @@ interface objectMetadata /* is ERC721 */ {
         "external_url": {
             "type": "string",
             "required": false,
-            "description": "a URI pointing to the corresponding data file where the data can be downloaded. If provided, the data at the URI should resolve to the same ISCC listed in the metadata.
+            "description": "a URI pointing to the corresponding data file where the data can be downloaded. If provided, the data at the URI should resolve to the same ISCC listed in the metadata."
         }
     }
 }
