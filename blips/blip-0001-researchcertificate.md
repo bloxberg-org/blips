@@ -17,7 +17,7 @@ In addition, as the research process can be considered a workflow - there is a l
 Our aim is to standardize the research data certification with respect to what metadata should be included to identify the data, the process of research certificate generation, and the subsequent validation of an issued research certificate.
 
 ## Specification
-Each certified piece of data is minted as a non-fungible (*Transferable ERC721 compliant or non-transferable) token. Each contract MUST include the ERC721Metadata standard augmented with an additional field that contains the hash of the data object. This is in order to ensure that the dataURI hosted offchain can be resolved to an onchain transaction. The ERC721Metadata is necessary in order to include the information for future identification and locating of the data object.
+Each certified piece of data is minted as a non-fungible (*Transferable ERC721 compliant or non-transferable) token. Each contract MUST include the ERC721Metadata standard augmented with an additional field that contains the hash of the data object. This is in order to ensure that the dataURI hosted offchain can be resolved to an onchain transaction. The ERC721Metadata is necessary to include the information for future identification of the data object.
 
 ```solidity
 /// @title Research Object Metadata Extension 
@@ -93,6 +93,12 @@ interface objectMetadata /* is ERC721 */ {
             "required": false,
             "description": "a URI pointing to the corresponding data file where the data can be downloaded. If provided, the data at the URI should resolve to the same ISCC listed in the metadata."
         }
+        ,
+        "timestamp": {
+            "type": "string",
+            "required": true,
+            "description": "UNIX timestamp that corresponds to the block confirmation time when the research data object token was minted."
+        }
     }
 }
 ```
@@ -103,4 +109,4 @@ In addition, due to the algorithmic design of [ISCC](https://iscc.codes/), it is
 
 ## Validation
 
-
+The hash identifier contained in the metadata extension for a given tokenID must identically match the data object it is referencing. The data object can be either publicly or privately available to concerned parties. Furthermore, by referencing the UNIX time of the block confirmation that included the token mint transaction, a timestamp corresponding to the research object can be verified.  The data certificate serves as a user-friendly method to provide evidence of research object certification. The certificate must include the hash code of the data object, an external_url of the data object that corresponds to the hash, and timestamp of the block when the token was minted.
