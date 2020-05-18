@@ -23,7 +23,7 @@ Each certified piece of data is minted as a non-fungible (*Transferable ERC721 c
 /// @title Research Object Metadata Extension 
 /// @dev See https://blips.bloxberg.org/blips/
 ///  Note: the ERC-165 identifier for this interface is 0x5b5e139f.
-interface objectMetadata /* is ERC721 */ {
+interface objectMetadata is ERC721Metadata  {
     /// @notice A descriptive name for a collection of NFTs in this contract
     function name() external view returns (string _name);
 
