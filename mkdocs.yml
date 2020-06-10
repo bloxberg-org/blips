@@ -66,7 +66,7 @@ markdown_extensions:
 pages:
   - 'Overview': 'index.md'
   - 'BLIP-2 - bloxberg Research Data Certificates': 'blip-2-researchcertificate.md'
-
+  - 'BLIP-3 - Peer review': 'blip-3-peerreview.md'
 
 docs_dir: 'blips'
 dev_addr: '127.0.0.1:8001'
