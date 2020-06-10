@@ -2,7 +2,8 @@
 
 | ID                         | Title                  | Type   | Status |
 | ------------------------------ | ---------------------- | ------ | ------ |
-| [BLIP-0001](blips/blip-0001-researchcertificate.md)        | Research Object Certification | Stream | ![Draft](http://rfc.unprotocols.org/spec:2/COSS/draft.svg) |
+| [BLIP-1](blips/blip-1-purposeguidelines.md)        | Purpose and Guidelines of BLIPs | Stream | ![Draft](http://rfc.unprotocols.org/spec:2/COSS/draft.svg) |
+| [BLIP-2](blips/blip-2-researchcertificate.md)        | Research Object Certification | Stream | ![Draft](http://rfc.unprotocols.org/spec:2/COSS/draft.svg) |
 
 ## Why BLIPs?
 

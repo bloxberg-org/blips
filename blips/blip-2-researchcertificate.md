@@ -5,7 +5,7 @@
 | Title:   | Research Object Certification                                      |
 | Owner(s):  | James Lawton                                                           |
 | Author(s):  | James Lawton                                                           |
-| Status:  | ![Draft](http://rfc.unprotocols.org/spec:2/COSS/draft.svg) |
+| Status:  | ![Draft] |
 | Created: | 2020-02-18                                                   |
 | License: | BSD-2-Clause                                                 |
 

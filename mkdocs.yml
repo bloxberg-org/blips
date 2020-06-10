@@ -65,7 +65,7 @@ markdown_extensions:
 # Page tree
 pages:
   - 'Overview': 'index.md'
-  - 'BIP0001 - bloxberg Research Data Certificates': 'blip-0001-researchcertificate.md'
+  - 'BLIP-2 - bloxberg Research Data Certificates': 'blip-2-researchcertificate.md'
 
 
 docs_dir: 'blips'
