@@ -27,16 +27,24 @@ This standard should specify which fields to register in every record, the forma
 | Field | data type | Format/s | Mandatory |  Comments|
 | -------- | ---- | ---- | -------- |----|
 |     id | string  | IPFS Hash??   | Yes     | The id should be unique. How to make sure reviews are unique? See [Zooko's triangle](https://en.wikipedia.org/wiki/Zooko%27s_triangle) for a relevant discussion on the compromises between decentralization, human usability and unique identifiers   |
+| doi | | | |
 |     timestamp | uint32     | unix timestamp     |  Yes    |
-|     author | address     |      |  Yes    |
+|     author | address     |      |  Yes    | |
 |     journalId | string     |   ISSN    |  Yes    |
 |     publisher | string     |     Name?   |  Yes    |
-|     manuscriptId | string     |  DOI   |  Yes    |
+|     manuscriptId | string     |  DOI   |  Yes    | See isReviewOf relationship of Crossref.
 |     manuscriptHash | string     |  IPFS   |  Yes    |
 |     recommendation | enum (**TODO**: See other standards such as Orcid, Publons...)    |     |  Yes    |
 |     url | string     |     |  Yes    | The url should give public access to the content of the review. Alternativelly, it can be a IPFS address so the content is served from a decentralized network
 |     endorsers | address[]     |     |  Yes    |
 |     endorsersMap | mapping(address => bool)     |     |  Yes    |
+| stage  | enum | Values: pre-publication, post-publication | Optional | Defined at [Crossref peer review stage schema](https://data.crossref.org/reports/help/schema_doc/4.4.2/NO_NAMESPACE.html#peer_review_stage)|
+| type | enum | Values: referee-report, 	editor-report, 	author-comment, community-comment, manuscript,	aggregate, recommendation | Optional | Defined at [Crossref peer review type schema](https://data.crossref.org/reports/help/schema_doc/4.4.2/NO_NAMESPACE.html#peer_review_type) |
+| revision-round | int |  | Yes |Defined at [Crossref peer review revision-round schema](https://data.crossref.org/reports/help/schema_doc/4.4.2/NO_NAMESPACE.html#peer_review_type) |
+| competing_interest_statement | string | | |
+| institution |
+| titles |
+| license_data |
 
 
 - [ ] **TODO** Decide which field could be private. For instance, the review content could be publicly shared or not depending on the reviewer's preferences.
@@ -51,10 +59,13 @@ This standard should specify which fields to register in every record, the forma
 ## Functions and Permissions
 
 
-| Function name | description | parameters | permission |
-| -------- | -------- | -------- |  -------- |
+| Function name | description | parameters | permission | Comment |
+| -------- | -------- | -------- |  -------- |----|
 | addReview | add a review to the system     | author, journalId, publisher, manuscriptId, ManuscriptHash, recommendation, url    | reviewers can add reviews to their profile. **TODO:** consider other authorized actors such as journals or review registering services (Publons, Orcid,...) |
-- [ ] **TODO** finish previous function specification table
+| addMultipleReviews | add multiple reviews to the system | ids, journalIds, publishers, manuscriptIds, manuscriptHashes, timestamps, recommendations, urls | reviewers can add multiple reviews to their profile at once |
+| deleteReview | delete a review from the system | id | reviews can be deleted by the author only |
+| endorseReview | endorse a review | address, id | reviews can be endorse by others only |
+| addEndorser | add an endorser address | address, name? | endorser address | How should endorsers share with the network how they verify reviews? different approaches from different actors should be supported. | Should the endorser be the `msg.sender` or do we pass it as a parameter ? |
 
 ## Decentralized Endorsements for Review Validity
 We should allow other reviewers and third parties to endorse for the validity of reviews registered at the system.
