@@ -1,4 +1,4 @@
-# Decentralized Identifiers (draft)
+# A Decentralized Identifiers Service (draft)
 
 ## Introduction
 W3C's Decentralized Identifier (DID) specification [(link)](https://www.w3.org/TR/did-core/) provides a means to manage the identities of trusted authorities that are issuing research object certificates [(link)](blips/blip-2-researchcertificate.md). 
@@ -58,11 +58,11 @@ A service that manages DIDs would implement the associated CRUD operations:
 * deactivate the DID (deletion of DIDs is by design not supported)
 
 
-### Creation
-Corresponds to the generation of the DID string and its registration with the service. The information provided here is typically:
+### Registration
+The creation of a DID corresponds to the generation of method string and its registration with the service. The information provided here by the user is typically:
 * a public key (mandatory)
 * user's signature with the aforementioned key (mandatory) 
-* user metadata (optional).
+* user metadata (optional)
 
 **Example request**
 
@@ -76,11 +76,20 @@ curl -X POST -H 'Content-Type: application/json' -i http://localhost:8080/didapi
 }'
 ~~~
 
-The resulting DDO (including DID) for this example is the json document above [(link)](#ddo_example)
+The resulting DDO (including DID) for this example is above [(link)](#ddo_example).
 
-### Retrieval
+### Authentication
+Performing an action with the service requires presenting the DID along with a signature. The signature needs to be verifiable with the public key specified as authentication means in the DDO.
+
+~~~
+curl -X POST -H 'Content-Type: application/json' -i http://localhost:8080/didapi/auth --data '{
+    "didentifier": "did:didapi:A5ZTPMkDy2ajX0DXH5VlwA",
+    "signature": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJ0aXRsZSI6IkEgdmFjY2luZSBmb3IgY292aWQtMTkiLCJhYnN0cmFjdCI6IkEgdmVyeSBpbnNpZ2h0ZnVsIGFic3RyYWN0Iiwia2V5d29yZHMiOiJjb3ZpZC0xOTsgdmFjY2luZTsgc3VzdGFpbmFiaWxpdHkiLCJhdXRob3IiOiJNYXggTXVzdGVybWFubiIsInVybCI6Imh0dHA6Ly93d3cubWF4bXVzdGVybWFubi5kZS9yZXNlYXJjaC9jb3ZpZC0xOV92YWNjaW5lLnBkZiJ9.RvTRy623gvFwW5JVMjj_r0GMzz9OMu82CFEwNdVsVc_mN7bKLzjj64uERPrJk9r0ttmswXKltE2P7J5k7L4T2WAjljk1pWInsTz1koJEFJev93BRqNGfyh0b8eilfFYTzgGYhjjvIBLKUCvx0cYBiJsKfNN8EuP-xf-CVJguqccD9sMTwH0a6h3Rv2FkWSzd3SvsO2NK4EJ-DdBGZ8R0ukDTjSYj51QlwBvB0ObeeIQDr_Gm_wrvXQW-_H30nISB19IKyTOhEZZwatRLaKZPh0NPKilHM_VbFxCSUELvIZo1vXfKzqgZN2YPoqLKwUZ39Xgbf8Y9qi-dBagUsQlkhA"
+}'
+~~~
 
 ### Update
+The service accepts updates to the DDO. A request consists of the entire DDO that should replace the older one. Patch requests may also be available.
 
 ### Deactivation
-
+The deactivation of a DID corresponds to deactivating an classical user account. The operation may be reversible.  
