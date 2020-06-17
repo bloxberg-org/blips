@@ -89,7 +89,7 @@ curl -X POST -H 'Content-Type: application/json' -i http://localhost:8080/didapi
 ~~~
 
 ### Update
-The service accepts updates to the DDO. A request consists of the entire DDO that should replace the older one. Patch requests may also be available.
+The service accepts updates to the DDO. A request consists of the entire DDO that should replace the older one. Patch requests may also be possible.
 
 ### Deactivation
 The deactivation of a DID corresponds to deactivating an classical user account. The operation may be reversible.  
