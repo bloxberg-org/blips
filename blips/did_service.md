@@ -2,7 +2,7 @@
 
 ## Introduction
 W3C's Decentralized Identifier (DID) specification [(link)](https://www.w3.org/TR/did-core/) provides a means to manage the identities of trusted authorities that are issuing research object certificates [(link)](blips/blip-2-researchcertificate.md). 
-A user's decentralized identifier is determined by them (as opposed to being assigned by a centralized authority) and its registration and later interaction with the service is based on public key cryptography. For privacy reasons, it is recommneded that the registering entity creates a DID per service in order to prevent correlation between various services.
+A user's decentralized identifier is determined by them (as opposed to being assigned by a centralized authority) and its registration and later interaction with the service is based on public key cryptography. For privacy reasons, it is recommneded that the registering entity creates one DID per service in order to prevent correlation between various services.
 
 The DID is a string consisting of three parts
 
