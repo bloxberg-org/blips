@@ -13,7 +13,18 @@ This BLIP is a draft: the collaborative document we use to write it is https://h
 
 ## Motivation
 
-A draft for a standardized peer review registry on the Bloxberg Blockchain.
+This document proposes an standard for the registration of peer reviews on the Bloxberg's blockchain. At bloxberg's bloeckchain ecosystem, there are currently several applications and projects that register peer reviews, such as Bloxberg's [peer-review-app](https://github.com/bloxberg-org/peer-review-app), [Decentralized Science](https://decentralized.science), or [peerMiles](peermiles-project.kmi.open.ac.uk/) project. An agreement of how to record these peer reviews would benefit Bloxberg's applications ecosystem, enabling interoperability among them.
+
+### List of blochain projects registering peer reviews
+Following, we list the blockchain projects that could benefit from this standard
+
+#### Projects actively contributing to the definition of the standard
+ - Bloxberg's [peer-review-app](https://github.com/bloxberg-org/peer-review-app)
+ - [Decentralized Science](https://decentralized.science)
+ - [peerMiles](https://peermiles-project.kmi.open.ac.uk/)
+
+#### Other active blockchain projects with interest in peer reviewing
+ - [Orvium](https://orvium.io/)
 
 ## Standard Peer Review registries
 Currently, our reference implementation peer-review-app is registering many fields of a peer review such as the review author, or the ID of the reviewed article.
@@ -74,3 +85,4 @@ Different actors can have different strategies to verify a review. These actors 
 
 ### How to bring trust to public endorsers
 As a decentralized application where we would allow different endorsers. Users, applications and other actors should decide which endorsers to trust. A system where users could vote up or down specific endorser's addresses could help to build trust in such addresses. Also, we could use the more advanced Token Curated Registries as a decentralized reputation system for endorses identities.
+
