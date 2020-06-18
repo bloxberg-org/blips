@@ -4,6 +4,7 @@
 | ------------------------------ | ---------------------- | ------ | ------ |
 | [BLIP-1](blips/blip-1-purposeguidelines.md)        | Purpose and Guidelines of BLIPs | Stream | ![Draft](http://rfc.unprotocols.org/spec:2/COSS/draft.svg) |
 | [BLIP-2](blips/blip-2-researchcertificate.md)        | Research Object Certification | Stream | ![Draft](http://rfc.unprotocols.org/spec:2/COSS/draft.svg) |
+| [BLIP-3](blip-3-peerreview.md) | Peer Review | Stream |  ![Raw](http://rfc.unprotocols.org/spec:2/COSS/raw.svg) |
 
 ## Why BLIPs?
 
