@@ -61,7 +61,7 @@ A service that manages DIDs would implement the associated CRUD operations:
 ### Registration
 The creation of a DID corresponds to the generation of method string and its registration with the service. The information provided here by the user is typically:
 * a public key (mandatory)
-* user's signature with the aforementioned key (mandatory) 
+* user's signature matching the aforementioned key (mandatory) 
 * user metadata (optional)
 
 **Example request**
@@ -92,4 +92,4 @@ curl -X POST -H 'Content-Type: application/json' -i http://localhost:8080/didapi
 The service accepts updates to the DDO. A request consists of the entire DDO that should replace the older one. Patch requests may also be possible.
 
 ### Deactivation
-The deactivation of a DID corresponds to deactivating an classical user account. The operation may be reversible.  
+The deactivation of a DID corresponds to deactivating a typical user account. The operation may be reversible.  
