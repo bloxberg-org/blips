@@ -65,6 +65,7 @@ This standard should specify which fields to register in every record, the forma
 
 - Orcid: https://support.orcid.org/hc/en-us/articles/360006971333-Peer-Review
 - Crossref: https://www.crossref.org/education/content-registration/recommendations-by-content-type/peer-reviews/
+  - [CrossRef UML visalization](https://github.com/semuelle/crossref-java) by @semuelle 
 
 
 ## Functions and Permissions
