@@ -32,81 +32,73 @@ interface objectMetadata is ERC721Metadata  {
 
     /// @notice A distinct Uniform Resource Identifier (URI) for a given asset.
     /// @dev Throws if `_tokenId` is not a valid NFT. URIs are defined in RFC
-    ///  3986. The URI may point to a JSON file that conforms to the "BLIPS-0001
+    ///  3986. The URI may point to a JSON-LD file that conforms to the "BLIPS-0002
     ///  Metadata JSON Schema".
     function tokenURI(uint256 _tokenId) external view returns (string);
 
-    /// @notice Algorithmic Identifier generated from the content and 
-    /// metadata from the data to be certified. Currently utilizing the ISCC
-    /// standard
-    function hashIdentifier(uint256 _tokenId) external view returns (string);
+    /// @notice Token Hash is an algorithmic identifier generated from bloxberg Research Object Certificate JSON-LD file(s) 
+    /// that MUST include a unique hash of the file byte content and metadata of the research object to be certified.
+    function tokenHash(uint256 _tokenId) external view returns (string);
 }
 ```
 
-## Metadata JSON Schema
- Each owner of the token is able to augment the tokenURI field to a hosting location of their choosing. Similar to DOI, it is the responsibility of each token owner to update the token URI. The URI may point to a JSON file that conforms to the EIP-1047 Metadata JSON Schema augmented with specific characteristics desirable for use with respect to scientific applications and to ensure compatibility across applications.
+## bloxberg Research Object Certificate JSON-LD Schema
+
+For each transaction that certifies a single or batch of research objects, a corresponding Research Object Certificate [JSON-LD](https://www.w3.org/TR/json-ld/) file MUST generated.
+The Research Object Certificate MUST conform to the [Verifiable Credentials](https://www.w3.org/TR/vc-data-model/) standard.
+ 
+Each owner of the token is able to augment the tokenURI field to a hosting location of their choosing that can resolve to a single or batch of certificates. Similar to DOI, it is the responsibility of each token owner to update the token URI. 
+The URI may point to a JSON file that conforms to the EIP-1047 Metadata JSON Schema augmented with specific characteristics desirable for use with respect to scientific applications and to ensure compatibility across applications.
 
 ```json
 {
-    "title": "Research Object Metadata",
-    "type": "object",
-    "properties": {
-        "name": {
-            "type": "string",
-            "required": false,
-            "description": "Identifies the asset to which this NFT represents"
-        },
-        "description": {
-            "type": "string",
-            "required": false,
-            "description": "Describes the asset to which this NFT represents"
-        },
-        "image": {
-            "type": "string",
-            "required": false,
-            "description": "A URI pointing to a resource with mime type image/* representing the asset to which this NFT represents. Consider making any images at a width between 320 and 1080 pixels and aspect ratio between 1.91:1 and 4:5 inclusive."
-        },
-        "claimant": {
-            "author(s)": {
-                "type": "array",
-                "required": true,
-                "description": "Array of the contributors and/or authors of the data associated with the corresponding ISCC."
-            },
-            "organization(s)": {
-                "type": "array",
-                "required": false,
-                "description": "Array of organizations that are stakeholders in the certified data."
-            }
-        },
-        "iscc": {
-            "type": "string",
-            "required": true,
-            "description": "ISCC is an algorithmic identifier generated from the content itself. This currently includes metadata similarity, normalized content similarity, encoded data similarity, and exact data integrity."
-        },
-        "certificate": {
-            "type": "string",
-            "required": false,
-            "description": "a URI pointing to the corresponding data certificate in PDF format. The certificate can be utilized to prove via certified timestamping the data certification time."
-        },
-        "external_url": {
-            "type": "string",
-            "required": false,
-            "description": "a URI pointing to the corresponding data file where the data can be downloaded. If provided, the data at the URI should resolve to the same ISCC listed in the metadata."
+    // Relevant JSON-LD context links in order to validate Verifiable Credentials according to their spec.
+    "@context": ["https://www.w3.org/2018/credentials/v1", "https://w3id.org/blockcerts/schema/3.0-alpha/context.json"], 
+    // UUID generated id corresponding to the certificate - OPTIONAL.
+    "id": "urn:uuid:94edcd1e-2a1d-43af-9f17-ef97816954b1",
+    // Credential types which declare what data to expect in the certificate.
+    "type": ["VerifiableCredential", "BlockcertsCredential"],
+    // Entity that issued the credential, also could be characterized as a DID.
+    "issuer": "https://raw.githubusercontent.com/bloxberg-org/issuer_json/master/issuer.json",
+    // Date & Time that the credential was issued.
+    "issuanceDate": "2020-09-10T13:05:11.996623+00:00", 
+    // claim about recipient of the certificate.
+    "credentialSubject": {
+        // identifier for the subject of the certificate.
+        "id": "einstein@mpg.de", 
+        // assertion about the subject of the certificate.
+        "alumniOf": {
+            "id": "https://bloxberg.org"
         }
-        ,
-        "timestamp": {
-            "type": "string",
-            "required": true,
-            "description": "UNIX timestamp that corresponds to the block confirmation time when the research data object token was minted."
-        }
+    }, 
+    // Html to render when certificate is verified - OPTIONAL.
+    "displayHtml": "<h1>bloxberg Certificate</h1><h2>This bloxberg certificate serves as a proof of existence that the data corresponding to the SHA256 Hash were transacted on the bloxberg blockchain at the issued time.</h2>", 
+    // Cryptographic hash that is derived from the research object to certify. The exact hashing algorithm can be generalized, but must uniquely identify a file according to its byte code such as SHA256, SHA-3, or ISCC.
+    "hash": "0x0e4ded5319861c8daac00d425c53a16bd180a7d01a340a0e00f7dede40d2c9f6", 
+    // Digital proof that ensures tamper-resistance.
+    "proof": {
+    // Cryptographic signature suite used to generate the signature.
+    "type": "MerkleProof2019", 
+    // Date the signature was created.
+    "created": "2020-09-10T13:05:15.582085", 
+    // Digital signature value derived from the cryptographic signature suite.
+    "proofValue": "z2LuLBVSfnVzaQtvzwDVNGE9aeuRToPVTvSHcbXMwzwS7ngfWtkBdbgfGaKJFM8W3GHN7MeAQ3zwt7dfESxWiY7Y4M3FxHg9pefhXggXgZPBYkZo9RUXMEkyu8xaxEoF8t6jqeMGARMZortEkgfCCTJMLGsfMfMXPcam4chnQwjhkTnmcZhRjoFUg13NZLwjsWYG961uv4inAiWHjBwM52kkv6vSD8EyTgXFjfooChsRXFiN4VykwPcUWBMRkuinHNwvrewx8dTPjijxdFAn1zDKJdUGn3erbVgV7VhMBbfmv7RQStgKbA1D6FvQNAVwsbW25NEEQ1mnGsBXDFH2EC1coFwRQTLTTDpiEjdKh4tRqk5kTycmpk1c1Zihm4d4URUMybAw1NmG4Hi12JKqZr", 
+    // purpose of the proof.
+    "proofPurpose": "assertionMethod", 
+    // identifier of the bloxberg public key that can verify the signature. 
+    "verificationMethod": "ecdsa-koblitz-pubkey:0xD748BF41264b906093460923169643f45BDbC32e"},
+    // Generalized metadata field that can contain additional data to describe the certificate - OPTIONAL
+    "@metadata": { "researchObjectName": "NeuronalImpulsePatient12.csv" }
     }
-}
 ```
 
 The research data schema offers flexibility in what specific metadata fields are required to be included. This is for several reasons: 1. Data generated at differ stages of the research cycle, it may not be possible to provide this information. 2. To ensure the protection of sensitive and confidential data that is acquired, analyzed, or processed. However, the required field ISCC, is required in order to ensure subsequent validation of data at a later point in time.
 
 In addition, due to the algorithmic design of [ISCC](https://iscc.codes/), it is possible to see a similarity matching of how data has been modified during the research workflow.
 
-## Validation
+## Verification
+
+
+
 
 The hash identifier contained in the metadata extension for a given tokenID must identically match the data object it is referencing. The data object can be either publicly or privately available to concerned parties. Furthermore, by referencing the UNIX time of the block confirmation that included the token mint transaction, a timestamp corresponding to the research object can be verified.  The data certificate serves as a user-friendly method to provide evidence of research object certification. The certificate must include the hash code of the data object, an external_url of the data object that corresponds to the hash, and timestamp of the block when the token was minted.
