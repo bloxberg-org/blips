@@ -14,10 +14,10 @@ Certifying that specific data or documents are generated, modified, analyzed, or
 
 In addition, as the research process can be considered a workflow - there is a large benefit to include measurements of how data has changed through the research process, for instance between initial acquisition and then preprocessing. Thus, by concatenating multiple generated certificates, the workflow of a research process can be certified and validated at a later point in time.
 
-Our aim is to standardize the research data certification with respect to what metadata should be included to identify the data, the process of research certificate generation, and the subsequent validation of an issued research certificate.
+Our aim is to standardize the research data certification with respect to what metadata should be included to identify the data, the process of research certificate generation, and the subsequent verification of an issued research certificate.
 
 ## Specification
-Each certified piece of data is minted as a non-fungible (*Transferable ERC721 compliant or non-transferable) token. Each contract MUST include the ERC721Metadata standard augmented with an additional field that contains the hash of the data object. This is in order to ensure that the dataURI hosted offchain can be resolved to an onchain transaction. The ERC721Metadata is necessary to include the information for future identification of the data object.
+Each desired batch of files or singular file is minted as a non-fungible (*Transferable ERC721 compliant or non-transferable) token. Each contract MUST include the ERC721Metadata standard augmented with an additional field that contains the hash of the data object. This is in order to ensure that the dataURI hosted offchain can be resolved to an onchain transaction. The ERC721Metadata is necessary to include the information for future identification of the data object.
 
 ```solidity
 /// @title Research Object Metadata Extension 
@@ -73,8 +73,10 @@ The URI may point to a JSON file that conforms to the EIP-1047 Metadata JSON Sch
     }, 
     // Html to render when certificate is verified - OPTIONAL.
     "displayHtml": "<h1>bloxberg Certificate</h1><h2>This bloxberg certificate serves as a proof of existence that the data corresponding to the SHA256 Hash were transacted on the bloxberg blockchain at the issued time.</h2>", 
-    // Cryptographic hash that is derived from the research object to certify. The exact hashing algorithm can be generalized, but must uniquely identify a file according to its byte code such as SHA256, SHA-3, or ISCC.
+    // Cryptographic hash that is derived from the research object to certify. The exact hashing algorithm can be generalized, but must uniquely identify a file such as SHA256, SHA-3, or ISCC.
     "hash": "0x0e4ded5319861c8daac00d425c53a16bd180a7d01a340a0e00f7dede40d2c9f6", 
+    // Crytographic hashing mechanism used to derive value in *hash*.
+    "hashType": "SHA256",
     // Digital proof that ensures tamper-resistance.
     "proof": {
     // Cryptographic signature suite used to generate the signature.
@@ -96,9 +98,21 @@ The research data schema offers flexibility in what specific metadata fields are
 
 In addition, due to the algorithmic design of [ISCC](https://iscc.codes/), it is possible to see a similarity matching of how data has been modified during the research workflow.
 
-## Verification
+## Verification of Certificates
+The unique hash identifier encoded in the *proofValue* calculated from the corresponding proof mechanism listed in *type* must identically match 
 
+Steps to Verify Certificate:
+1. Transaction ID is validated against a bloxberg blockchain explorer via a remote API call. Transaction ID is obtained by decoding (if necessary) the proof value to obtain the anchoring information for the transaction.
+2. The local hash of the single or batch research object certification is computed from the certificate *proofValue* and determined whether it is valid.
+3. The remote hash stored in the variable *tokenHash* of the corresponding transaction ID is checked whether it is valid.
+4. Issuer keys are parsed to ensure that the DID or issuer profile is correctly defined and issued the relevant certificate.
+5. The remote and local hash are compared to confirm correctness.
 
+These steps ensure that the certificate is valid and secured on the bloxberg blockchain on the issuanceDate. An additional step can be taken to ensure data integrity of an individual research object:
+1. Compute cryptographic hash of certified research object according to function listed in variable *hashType*.
+2. Compare computed value with value secured in research object certificate.
 
-
-The hash identifier contained in the metadata extension for a given tokenID must identically match the data object it is referencing. The data object can be either publicly or privately available to concerned parties. Furthermore, by referencing the UNIX time of the block confirmation that included the token mint transaction, a timestamp corresponding to the research object can be verified.  The data certificate serves as a user-friendly method to provide evidence of research object certification. The certificate must include the hash code of the data object, an external_url of the data object that corresponds to the hash, and timestamp of the block when the token was minted.
+## References
+1. Verifiable Credentials Data Model 1.0. https://www.w3.org/TR/vc-data-model/.
+2. Merkle Proof Signature Suite 2019. https://w3c-ccg.github.io/lds-merkle-proof-2019/.
+3. International Standard Content Code. https://iscc.codes.
