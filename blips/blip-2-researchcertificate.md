@@ -102,15 +102,21 @@ In addition, due to the algorithmic design of [ISCC](https://iscc.codes/), it is
 The unique hash identifier encoded in the *proofValue* calculated from the corresponding proof mechanism listed in *type* must identically match 
 
 Steps to Verify Certificate:
-1. Transaction ID is validated against a bloxberg blockchain explorer via a remote API call. Transaction ID is obtained by decoding (if necessary) the proof value to obtain the anchoring information for the transaction.
-2. The local hash of the single or batch research object certification is computed from the certificate *proofValue* and determined whether it is valid.
-3. The remote hash stored in the variable *tokenHash* of the corresponding transaction ID is checked whether it is valid.
-4. Issuer keys are parsed to ensure that the DID or issuer profile is correctly defined and issued the relevant certificate.
-5. The remote and local hash are compared to confirm correctness.
 
-These steps ensure that the certificate is valid and secured on the bloxberg blockchain on the issuanceDate. An additional step can be taken to ensure data integrity of an individual research object:
-1. Compute cryptographic hash of certified research object according to function listed in variable *hashType*.
-2. Compare computed value with value secured in research object certificate.
+<ol>
+<li>Transaction ID is validated against a bloxberg blockchain explorer via a remote API call. Transaction ID is obtained by decoding (if necessary) the proof value to obtain the anchoring information for the transaction.</li>
+<li> The local hash of the single or batch research object certification is computed from the certificate *proofValue* and determined whether it is valid.</li>
+<li> The remote hash stored in the variable *tokenHash* of the corresponding transaction ID is checked whether it is valid.</li>
+<li> Issuer keys are parsed to ensure that the DID or issuer profile is correctly defined and issued the relevant certificate.</li>
+<li> The remote and local hash are compared to confirm correctness.</li>
+</ol>
+
+
+These steps ensure that the certificate is valid and secured on the bloxberg blockchain on the issuanceDate. Additional verification steps can be taken to ensure data integrity of an individual research object:
+<ol>
+<li>Compute cryptographic hash of certified research object according to function listed in variable *hashType*.</li>
+<li>Compare computed value with value secured in research object certificate.</li>
+</ol>
 
 ## References
 1. Verifiable Credentials Data Model 1.0. https://www.w3.org/TR/vc-data-model/.
