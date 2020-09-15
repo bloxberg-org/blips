@@ -14,13 +14,13 @@ Certifying that specific data or documents are generated, modified, analyzed, or
 
 In addition, as the research process can be considered a workflow - there is a large benefit to include measurements of how data has changed through the research process, for instance between initial acquisition and then preprocessing. Thus, by concatenating multiple generated certificates, the workflow of a research process can be certified and validated at a later point in time.
 
-Our aim is to standardize the research data certification with respect to what metadata should be included to identify the data, the process of research certificate generation, and the subsequent verification of an issued research certificate.
+Our aim is to standardize the research data certification with respect to what metadata should be included to identify and certify the data, the process of research certificate generation, and the subsequent verification of an issued research certificate.
 
 ## Specification
-Each desired batch of files or singular file is minted as a non-fungible (*Transferable ERC721 compliant or non-transferable) token. Each contract MUST include the ERC721Metadata standard augmented with an additional field that contains the hash of the data object. This is in order to ensure that the dataURI hosted offchain can be resolved to an onchain transaction. The ERC721Metadata is necessary to include the information for future identification of the data object.
+Each desired batch of data objects or singular object is minted as a non-fungible ERC721 token. Each contract MUST include the ERC721Metadata standard augmented with an additional field that contains a unique, cryptographic hash of the bloxberg Research Object Certificate(s) included in the minting transaction. This process ensures that the research object certificate(s) can be resolved to an onchain transaction, thereby guaranteeing data integrity and provenance without disclosing sensitive information, if desired.
 
 ```solidity
-/// @title Research Object Metadata Extension 
+/// @title Research Object Certificate ERC721Metadata
 /// @dev See https://blips.bloxberg.org/blips/
 ///  Note: the ERC-165 identifier for this interface is 0x5b5e139f.
 interface objectMetadata is ERC721Metadata  {
@@ -32,12 +32,11 @@ interface objectMetadata is ERC721Metadata  {
 
     /// @notice A distinct Uniform Resource Identifier (URI) for a given asset.
     /// @dev Throws if `_tokenId` is not a valid NFT. URIs are defined in RFC
-    ///  3986. The URI may point to a JSON-LD file that conforms to the "BLIPS-0002
-    ///  Metadata JSON Schema".
+    ///  3986. The URI may point to a JSON-LD file that conforms to the "bloxberg Research Object Certificate JSON-LD Schema".
     function tokenURI(uint256 _tokenId) external view returns (string);
 
     /// @notice Token Hash is an algorithmic identifier generated from bloxberg Research Object Certificate JSON-LD file(s) 
-    /// that MUST include a unique hash of the file byte content and metadata of the research object to be certified.
+    /// that MUST include a unique hash of the file byte content and metadata of the Research Object Certificate(s) to be certified.
     function tokenHash(uint256 _tokenId) external view returns (string);
 }
 ```
@@ -46,9 +45,7 @@ interface objectMetadata is ERC721Metadata  {
 
 For each transaction that certifies a single or batch of research objects, a corresponding Research Object Certificate [JSON-LD](https://www.w3.org/TR/json-ld/) file MUST generated.
 The Research Object Certificate MUST conform to the [Verifiable Credentials](https://www.w3.org/TR/vc-data-model/) standard.
- 
-Each owner of the token is able to augment the tokenURI field to a hosting location of their choosing that can resolve to a single or batch of certificates. Similar to DOI, it is the responsibility of each token owner to update the token URI. 
-The URI may point to a JSON file that conforms to the EIP-1047 Metadata JSON Schema augmented with specific characteristics desirable for use with respect to scientific applications and to ensure compatibility across applications.
+Each owner of the token is able to augment the tokenURI field to a hosting location of their choosing that can resolve to a single or batch of certificates. Similar to DOI, it is the responsibility of each token owner to update the token URI.
 
 ```json
 {
@@ -93,26 +90,32 @@ The URI may point to a JSON file that conforms to the EIP-1047 Metadata JSON Sch
     "@metadata": { "researchObjectName": "NeuronalImpulsePatient12.csv" }
     }
 ```
-
-The research data schema offers flexibility in what specific metadata fields are required to be included. This is for several reasons: 1. Data generated at differ stages of the research cycle, it may not be possible to provide this information. 2. To ensure the protection of sensitive and confidential data that is acquired, analyzed, or processed. However, the required field ISCC, is required in order to ensure subsequent validation of data at a later point in time.
-
-In addition, due to the algorithmic design of [ISCC](https://iscc.codes/), it is possible to see a similarity matching of how data has been modified during the research workflow.
+The bloxberg research object certificate offers flexibility in what specific metadata fields could be included in the metadata field. This is to account for the breadth of scientific disciplines, privacy or data security requirements, and different stages of the research workflow.
 
 ## Verification of Certificates
 The unique hash identifier encoded in the *proofValue* calculated from the corresponding proof mechanism listed in *type* must identically match 
 
 Steps to Verify Certificate:
-1. Transaction ID is validated against a bloxberg blockchain explorer via a remote API call. Transaction ID is obtained by decoding (if necessary) the proof value to obtain the anchoring information for the transaction.
-2. The local hash of the single or batch research object certification is computed from the certificate *proofValue* and determined whether it is valid.
-3. The remote hash stored in the variable *tokenHash* of the corresponding transaction ID is checked whether it is valid.
-4. Issuer keys are parsed to ensure that the DID or issuer profile is correctly defined and issued the relevant certificate.
-5. The remote and local hash are compared to confirm correctness.
 
-These steps ensure that the certificate is valid and secured on the bloxberg blockchain on the issuanceDate. An additional step can be taken to ensure data integrity of an individual research object:
-1. Compute cryptographic hash of certified research object according to function listed in variable *hashType*.
-2. Compare computed value with value secured in research object certificate.
+<ol>
+<li>Transaction ID is validated against the bloxberg blockchain via a query. Transaction ID is obtained by decoding (if necessary) the proof value to obtain the anchoring information for the transaction.</li>
+<li> The local hash of the single or batch research object certification is computed from the certificate *proofValue* and determined whether it is valid.</li>
+<li> The remote hash stored in the variable *tokenHash* of the corresponding transaction ID is checked whether it is valid.</li>
+<li> Issuer keys are parsed to ensure that the DID or issuer profile is correctly defined and issued the relevant certificate.</li>
+<li> The remote and local hash are compared to confirm correctness.</li>
+</ol>
+
+
+These steps ensure that the certificate is valid and secured on the bloxberg blockchain on the issuanceDate. Additional verification steps can be taken to ensure data integrity of any individual research object secured in a batch or individually:
+<ol>
+<li>Compute cryptographic hash of certified research object according to function listed in variable *hashType*.</li>
+<li>Compare computed value with value secured in research object certificate and ensure that they are identical.</li>
+</ol>
 
 ## References
-1. Verifiable Credentials Data Model 1.0. https://www.w3.org/TR/vc-data-model/.
-2. Merkle Proof Signature Suite 2019. https://w3c-ccg.github.io/lds-merkle-proof-2019/.
-3. International Standard Content Code. https://iscc.codes.
+<ol>
+<li>Verifiable Credentials Data Model 1.0. https://www.w3.org/TR/vc-data-model/.</li>
+<li> Merkle Proof Signature Suite 2019. https://w3c-ccg.github.io/lds-merkle-proof-2019/.</li>
+<li>International Standard Content Code. https://iscc.codes.</li>
+<li>ERC-721 Non-Fungible Token Standardhttps://eips.ethereum.org/EIPS/eip-721</li>
+</ol>
