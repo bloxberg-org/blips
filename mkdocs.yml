@@ -65,6 +65,7 @@ markdown_extensions:
 # Page tree
 pages:
   - 'Overview': 'index.md'
+  - 'BLIP-1- Purpose & Guidelines': 'blip-1-purposeguidelines.md'
   - 'BLIP-2 - bloxberg Research Data Certificates': 'blip-2-researchcertificate.md'
   - 'BLIP-3 - Peer review': 'blip-3-peerreview.md'
 
