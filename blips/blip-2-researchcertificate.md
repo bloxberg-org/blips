@@ -88,8 +88,10 @@ Each owner of the token is able to augment the tokenURI field to a hosting locat
         "verificationMethod": "ecdsa-koblitz-pubkey:0xD748BF41264b906093460923169643f45BDbC32e"
     },
     // Generalized metadata field that can contain additional data to describe the certificate - OPTIONAL
-    "@metadata": { "researchObjectName": "NeuronalImpulsePatient12.csv" }
-    }
+    "@metadata": { 
+        "researchObjectName": "NeuronalImpulsePatient12.csv" 
+      }
+}
 ```
 The bloxberg research object certificate offers flexibility in what specific metadata fields could be included in the metadata field. This is to account for the breadth of scientific disciplines, privacy or data security requirements, and different stages of the research workflow.
 
