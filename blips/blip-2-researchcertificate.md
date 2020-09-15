@@ -76,16 +76,17 @@ Each owner of the token is able to augment the tokenURI field to a hosting locat
     "hashType": "SHA256",
     // Digital proof that ensures tamper-resistance.
     "proof": {
-    // Cryptographic signature suite used to generate the signature.
-    "type": "MerkleProof2019", 
-    // Date the signature was created.
-    "created": "2020-09-10T13:05:15.582085", 
-    // Digital signature value derived from the cryptographic signature suite.
-    "proofValue": "z2LuLBVSfnVzaQtvzwDVNGE9aeuRToPVTvSHcbXMwzwS7ngfWtkBdbgfGaKJFM8W3GHN7MeAQ3zwt7dfESxWiY7Y4M3FxHg9pefhXggXgZPBYkZo9RUXMEkyu8xaxEoF8t6jqeMGARMZortEkgfCCTJMLGsfMfMXPcam4chnQwjhkTnmcZhRjoFUg13NZLwjsWYG961uv4inAiWHjBwM52kkv6vSD8EyTgXFjfooChsRXFiN4VykwPcUWBMRkuinHNwvrewx8dTPjijxdFAn1zDKJdUGn3erbVgV7VhMBbfmv7RQStgKbA1D6FvQNAVwsbW25NEEQ1mnGsBXDFH2EC1coFwRQTLTTDpiEjdKh4tRqk5kTycmpk1c1Zihm4d4URUMybAw1NmG4Hi12JKqZr", 
-    // purpose of the proof.
-    "proofPurpose": "assertionMethod", 
-    // identifier of the bloxberg public key that can verify the signature. 
-    "verificationMethod": "ecdsa-koblitz-pubkey:0xD748BF41264b906093460923169643f45BDbC32e"},
+        // Cryptographic signature suite used to generate the signature.
+        "type": "MerkleProof2019", 
+        // Date the signature was created.
+        "created": "2020-09-10T13:05:15.582085", 
+        // Digital signature value derived from the cryptographic signature suite.
+        "proofValue": "z2LuLBVSfnVzaQtvzwDVNGE9aeuRToPVTvSHcbXMwzwS7ngfWtkBdbgfGaKJFM8W3GHN7MeAQ3zwt7dfESxWiY7Y4M3FxHg9pefhXggXgZPBYkZo9RUXMEkyu8xaxEoF8t6jqeMGARMZortEkgfCCTJMLGsfMfMXPcam4chnQwjhkTnmcZhRjoFUg13NZLwjsWYG961uv4inAiWHjBwM52kkv6vSD8EyTgXFjfooChsRXFiN4VykwPcUWBMRkuinHNwvrewx8dTPjijxdFAn1zDKJdUGn3erbVgV7VhMBbfmv7RQStgKbA1D6FvQNAVwsbW25NEEQ1mnGsBXDFH2EC1coFwRQTLTTDpiEjdKh4tRqk5kTycmpk1c1Zihm4d4URUMybAw1NmG4Hi12JKqZr", 
+        // purpose of the proof.
+        "proofPurpose": "assertionMethod", 
+        // identifier of the bloxberg public key that can verify the signature. 
+        "verificationMethod": "ecdsa-koblitz-pubkey:0xD748BF41264b906093460923169643f45BDbC32e"
+    },
     // Generalized metadata field that can contain additional data to describe the certificate - OPTIONAL
     "@metadata": { "researchObjectName": "NeuronalImpulsePatient12.csv" }
     }
