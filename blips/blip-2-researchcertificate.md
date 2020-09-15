@@ -17,7 +17,7 @@ In addition, as the research process can be considered a workflow - there is a l
 Our aim is to standardize the research data certification with respect to what metadata should be included to identify and certify the data, the process of research certificate generation, and the subsequent verification of an issued research certificate.
 
 ## Specification
-Each desired batch of data objects or singular object is minted as a non-fungible ERC721 token. Each contract MUST include the ERC721Metadata standard augmented with an additional field that contains a unique, cryptographic hash of the bloxberg Research Object Certificate(s) included in the minting transaction. This process ensures that the research object certificate(s) can be resolved to an onchain transaction, thereby guaranteeing data integrity and provenance without disclosing sensitive information, if desired.
+Each desired batch of data objects or singular object is minted as a non-fungible ERC721 token. Each contract MUST include the ERC721Metadata standard augmented with an additional field that contains a unique, cryptographic identifier of the bloxberg Research Object Certificate(s) included in the minting transaction. This process ensures that the research object certificate(s) can be resolved to an onchain transaction, thereby guaranteeing data integrity and provenance without disclosing sensitive information, if desired.
 
 ```solidity
 /// @title Research Object Certificate ERC721Metadata
@@ -36,7 +36,7 @@ interface objectMetadata is ERC721Metadata  {
     function tokenURI(uint256 _tokenId) external view returns (string);
 
     /// @notice Token Hash is an algorithmic identifier generated from bloxberg Research Object Certificate JSON-LD file(s) 
-    /// that MUST include a unique hash of the file byte content and metadata of the Research Object Certificate(s) to be certified.
+    /// that MUST include a unique identifier of the file byte content and metadata of the Research Object Certificate(s) to be certified.
     function tokenHash(uint256 _tokenId) external view returns (string);
 }
 ```
@@ -70,7 +70,7 @@ Each owner of the token is able to augment the tokenURI field to a hosting locat
     }, 
     // Html to render when certificate is verified - OPTIONAL.
     "displayHtml": "<h1>bloxberg Certificate</h1><h2>This bloxberg certificate serves as a proof of existence that the data corresponding to the SHA256 Hash were transacted on the bloxberg blockchain at the issued time.</h2>", 
-    // Cryptographic identifier that is derived from the research object to certify. The exact hashing algorithm can be generalized, but must uniquely identify a file such as SHA256, SHA-3, or ISCC.
+    // Cryptographic identifier that is derived from the research object to certify. The exact hashing or identification algorithm can be generalized, but must uniquely identify a file such as SHA256, SHA-3, or ISCC.
     "hash": "0x0e4ded5319861c8daac00d425c53a16bd180a7d01a340a0e00f7dede40d2c9f6", 
     // Crytographic identifier generation mechanism used to derive value in *hash*.
     "hashType": "SHA256",
@@ -96,7 +96,7 @@ Each owner of the token is able to augment the tokenURI field to a hosting locat
 The bloxberg research object certificate offers flexibility in what specific metadata fields could be included in the metadata field. This is to account for the breadth of scientific disciplines, privacy or data security requirements, and different stages of the research workflow.
 
 ## Verification of Certificates
-The unique hash identifier encoded in the *proofValue* calculated from the corresponding proof mechanism listed in *type* must identically match 
+The unique identifier encoded in the *proofValue* calculated from the corresponding proof mechanism listed in *type* must identically match 
 
 Steps to Verify Certificate:
 
