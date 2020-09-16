@@ -69,11 +69,11 @@ Each owner of the token is able to augment the tokenURI field to a hosting locat
         }
     }, 
     // Html to render when certificate is verified - OPTIONAL.
-    "displayHtml": "<h1>bloxberg Certificate</h1><h2>This bloxberg certificate serves as a proof of existence that the data corresponding to the SHA256 Hash were transacted on the bloxberg blockchain at the issued time.</h2>", 
+    "displayHtml": "<h1>bloxberg Certificate</h1><h2>This bloxberg certificate serves as a proof of existence that the data corresponding to the Cryptographic Identifier were transacted on the bloxberg blockchain at the issued time.</h2>", 
     // Cryptographic identifier that is derived from the research object to certify. The exact hashing or identification algorithm can be generalized, but must uniquely identify a file such as SHA256, SHA-3, or ISCC.
-    "hash": "0x0e4ded5319861c8daac00d425c53a16bd180a7d01a340a0e00f7dede40d2c9f6", 
-    // Crytographic identifier generation mechanism used to derive value in *hash*.
-    "hashType": "SHA256",
+    "crid": "0x0e4ded5319861c8daac00d425c53a16bd180a7d01a340a0e00f7dede40d2c9f6", 
+    // Crytographic identifier generation mechanism used to derive value in *crid*. - OPTIONAL IF *crid* is self-describing, for example formatted as a multihash.
+    "cridType": "SHA256",
     // Digital proof that ensures tamper-resistance.
     "proof": {
         // Cryptographic signature suite used to generate the signature.
@@ -113,7 +113,7 @@ Steps to Verify Certificate:
 
 These steps ensure that the certificate is valid and secured on the bloxberg blockchain on the issuanceDate. Additional verification steps can be taken to ensure data integrity of any individual research object secured in a batch or individually:
 <ol>
-<li>Compute cryptographic identifier of certified research object according to function listed in variable *hashType*.</li>
+<li>Compute cryptographic identifier of certified research object according to function listed in variable *cidType*.</li>
 <li>Compare computed value with value secured in research object certificate and ensure that they are identical.</li>
 </ol>
 
@@ -122,5 +122,6 @@ These steps ensure that the certificate is valid and secured on the bloxberg blo
 <li>Verifiable Credentials Data Model 1.0. https://www.w3.org/TR/vc-data-model/.</li>
 <li>Merkle Proof Signature Suite 2019. https://w3c-ccg.github.io/lds-merkle-proof-2019/.</li>
 <li>International Standard Content Code. https://iscc.codes.</li>
-<li>ERC-721 Non-Fungible Token Standardhttps://eips.ethereum.org/EIPS/eip-721</li>
+<li>ERC-721 Non-Fungible Token Standard. https://eips.ethereum.org/EIPS/eip-721</li>
+<li>Multihash - Self Describing Hashes. https://multiformats.io/multihash/</li>
 </ol>
