@@ -113,7 +113,7 @@ Steps to Verify Certificate:
 
 These steps ensure that the certificate is valid and secured on the bloxberg blockchain on the issuanceDate. Additional verification steps can be taken to ensure data integrity of any individual research object secured in a batch or individually:
 <ol>
-<li>Compute cryptographic identifier of certified research object according to function listed in variable *cidType*.</li>
+<li>Compute cryptographic identifier of certified research object according to function listed in variable *cidType* or the described hash if self-describing.</li>
 <li>Compare computed value with value secured in research object certificate and ensure that they are identical.</li>
 </ol>
 
