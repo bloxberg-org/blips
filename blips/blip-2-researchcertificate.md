@@ -73,7 +73,7 @@ Each owner of the token is able to augment the tokenURI field to a hosting locat
     // Cryptographic identifier that is derived from the research object to certify. The exact hashing or identification algorithm can be generalized, but must uniquely identify a file such as SHA256, SHA-3, or ISCC.
     "crid": "0x0e4ded5319861c8daac00d425c53a16bd180a7d01a340a0e00f7dede40d2c9f6", 
     // Crytographic identifier generation mechanism used to derive value in *crid*. - OPTIONAL IF *crid* is self-describing, for example formatted as a multihash.
-    "cridType": "SHA256",
+    "cridType": "sha2-256",
     // Digital proof that ensures tamper-resistance.
     "proof": {
         // Cryptographic signature suite used to generate the signature.
