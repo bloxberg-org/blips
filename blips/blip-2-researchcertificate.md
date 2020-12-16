@@ -51,8 +51,6 @@ Each owner of the token is able to augment the tokenURI field to a hosting locat
 {
     // Relevant JSON-LD context links in order to validate Verifiable Credentials according to their spec.
     "@context": ["https://www.w3.org/2018/credentials/v1", "https://w3id.org/blockcerts/schema/3.0-alpha/context.json"], 
-    // UUID generated id corresponding to the certificate - OPTIONAL.
-    "id": "urn:uuid:94edcd1e-2a1d-43af-9f17-ef97816954b1",
     // Credential types which declare what data to expect in the certificate.
     "type": ["VerifiableCredential", "BlockcertsCredential"],
     // Entity that issued the credential, also could be characterized as a DID.
@@ -61,10 +59,10 @@ Each owner of the token is able to augment the tokenURI field to a hosting locat
     "issuanceDate": "2020-09-10T13:05:11.996623+00:00", 
     // claim about recipient of the certificate.
     "credentialSubject": {
-        // identifier for the subject of the certificate.
-        "id": "einstein@mpg.de", 
-        // assertion about the subject of the certificate.
-        "alumniOf": {
+        // identifier for the subject of the certificate. Must be a resolvable URI if included - OPTIONAL
+        "id": "did:example:ebfeb1f712ebc6f1c276e12ec21", 
+        // URI of the issuing party of the research object certificate
+        "issuingOrg": {
             "id": "https://bloxberg.org"
         }
     }, 
@@ -88,8 +86,8 @@ Each owner of the token is able to augment the tokenURI field to a hosting locat
         "verificationMethod": "ecdsa-koblitz-pubkey:0xD748BF41264b906093460923169643f45BDbC32e"
     },
     // Generalized metadata field that can contain additional data to describe the certificate - OPTIONAL
-    "@metadata": { 
-        "researchObjectName": "NeuronalImpulsePatient12.csv" 
+    "metadataJson": { 
+        "authors": "Albert Einstein" 
       }
 }
 ```
@@ -111,7 +109,7 @@ Steps to Verify Certificate:
 </ol>
 
 
-These steps ensure that the certificate is valid and secured on the bloxberg blockchain on the issuanceDate. Additional verification steps can be taken to ensure data integrity of any individual research object secured in a batch or individually:
+These steps ensure that the certificate is valid and secured via the bloxberg blockchain on the issuanceDate. Additional verification steps can be taken to ensure data integrity of any individual research object secured in a batch or individually:
 <ol>
 <li>Compute cryptographic identifier of certified research object according to function listed in variable *cidType* or the described hash if self-describing.</li>
 <li>Compare computed value with value secured in research object certificate and ensure that they are identical.</li>
@@ -122,6 +120,6 @@ These steps ensure that the certificate is valid and secured on the bloxberg blo
 <li>Verifiable Credentials Data Model 1.0. https://www.w3.org/TR/vc-data-model/.</li>
 <li>Merkle Proof Signature Suite 2019. https://w3c-ccg.github.io/lds-merkle-proof-2019/.</li>
 <li>International Standard Content Code. https://iscc.codes.</li>
-<li>ERC-721 Non-Fungible Token Standard. https://eips.ethereum.org/EIPS/eip-721</li>
-<li>Multihash - Self Describing Hashes. https://multiformats.io/multihash/</li>
+<li>ERC-721 Non-Fungible Token Standard. https://eips.ethereum.org/EIPS/eip-721.</li>
+<li>Multihash - Self Describing Hashes. https://multiformats.io/multihash/.</li>
 </ol>
