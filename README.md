@@ -1,3 +1,5 @@
+[![DOI](https://zenodo.org/badge/241354659.svg)](https://zenodo.org/badge/latestdoi/241354659)
+
 # bloxberg Improvement Proposals
 
 | ID                         | Title                  | Type   | Status |
