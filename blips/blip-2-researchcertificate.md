@@ -53,6 +53,8 @@ Each owner of the token is able to augment the tokenURI field to a hosting locat
     "@context": ["https://www.w3.org/2018/credentials/v1", "https://w3id.org/blockcerts/schema/3.0-alpha/context.json"], 
     // Credential types which declare what data to expect in the certificate.
     "type": ["VerifiableCredential", "BlockcertsCredential"],
+    // URI that is associated with the certificate.
+    "id": "https://bloxberg.org/94edcd1e-2a1d-43af-9f17-ef97816954b1",
     // Entity that issued the credential, also could be characterized as a DID.
     "issuer": "https://raw.githubusercontent.com/bloxberg-org/issuer_json/master/issuer.json",
     // Date & Time that the credential was issued.

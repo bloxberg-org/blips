@@ -10,7 +10,7 @@ repo_url: 'https://github.com/bloxberg-org/blips'
 edit_uri: 'blob/master/blips/'
 
 # Copyright
-copyright: 'Copyright &copy; 2020 bloxberg Consortium'
+copyright: 'Copyright &copy; 2021 bloxberg Consortium'
 
 # Configuration
 strict: true
