@@ -7,6 +7,8 @@
 | [BLIP-1](blips/blip-1-purposeguidelines.md)        | Purpose and Guidelines of BLIPs | Stream | ![Draft](http://rfc.unprotocols.org/spec:2/COSS/draft.svg) |
 | [BLIP-2](blips/blip-2-researchcertificate.md)        | Research Object Certification | Stream | ![Draft](http://rfc.unprotocols.org/spec:2/COSS/draft.svg) |
 | [BLIP-3](blips/blip-3-peerreview.md) | Peer Review | Stream |  ![Raw](http://rfc.unprotocols.org/spec:2/COSS/raw.svg) |
+| [BLIP-4](blips/blip-4-consensusupgrade.md) |  Bloxberg 2.0 Consensus and Tokenomics Upgrade | Stream |  ![Raw](http://rfc.unprotocols.org/spec:2/COSS/raw.svg) |
+
 
 ## Why BLIPs?
 

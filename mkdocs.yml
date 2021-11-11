@@ -68,6 +68,7 @@ pages:
   - 'BLIP-1- Purpose & Guidelines': 'blip-1-purposeguidelines.md'
   - 'BLIP-2 - bloxberg Research Data Certificates': 'blip-2-researchcertificate.md'
   - 'BLIP-3 - Peer review': 'blip-3-peerreview.md'
+  - 'BLIP-4 - bloxberg 2.0 Consensus Upgrade and Tokenomics': 'blip-4-consensusupgrade.md'
 
 docs_dir: 'blips'
 dev_addr: '127.0.0.1:8001'
