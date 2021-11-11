@@ -29,8 +29,7 @@ Each validator during receives a static block reward (or fixed percentage based 
 
 Proposed constants:
 
-
-block reward - 2 bergs per block, have to model how much this is per block
+block reward - 8 bergs per block, have to model how much gBergs this generates per block and inflation schedule
 Epoch, e - 1 week
 Number of Validators - 23
 Size of candidate pool - Unlimited
@@ -39,15 +38,15 @@ Size of candidate pool - Unlimited
 Generating pseudorandom numbers in a blockchain environment is quite difficult. For this, we utilize the methodology outlined from the RandomAura RNG (citation needed) smart contract (https://github.com/poanetwork/posdao-contracts/blob/master/contracts/RandomAuRa.sol) of a sequence of commit and reveal phases 
 
 ## Dual-token Design
-
-### Bergs
-Bergs are governance tokens that used to secure bloxberg as well as vote on various governance proposals to maintain the bloxberg infrastructure. Bergs can have a 
-
-
-TBD: Economic modeling of bergs based on desired inflation rate, bergs on genesis, amount of gBergs desired to be elicited
-### gBergs (gas bergs)
+Bergs are governance tokens that used to secure bloxberg as well as vote on various governance proposals to maintain the bloxberg infrastructure. 
 
 gBergs (suggestions for better name welcome) are elicited at a constant speed based on the amount of bergs held which are used for transaction costs on the bloxberg blockchain. The aim is to ensure that security is retained on bloxberg while still ensuring the cost of utilizing bloxberg is kept to a minimum, especially for scientific and research focused applications. Thus, by decoupling the cost of computation on bloxberg from regular Bergs, we will ensure that the use cases will be feasible well into the future.
+
+### Bergs
+
+TBD: Economic modeling of bergs based on desired inflation rate, bergs on genesis, amount of gBergs desired to be elicited.
+TBD: Define initial supply, suggested 1 billion Bergs with a fixed rate of inflation for block rewards.
+### gBergs (gas bergs)
 
 For this purpose, we can define the generation rate of gBergs. Let B be the amount of bergs in the system, t is time in terms of blocks validated, and b is generation speed. 
 Generation rate = b * B * t
