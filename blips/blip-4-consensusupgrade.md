@@ -1,13 +1,13 @@
-This BLIP is a draft: the collaborative document we use to write it is https://hackmd.io/QtoxlUimQNSJByIRKm0IwQ?edit
+This BLIP is a draft: the collaborative document we use to write it is https://hackmd.io/@vTNQxx2rTC-Ec89V7ae1Xg/ByWibs1dK/edit
 
-# Peer Review
+# Consensus Upgrade & Tokenomics
 
 | BLIP:     | 4                                                        |
 | -------- | ------------------------------------------------------------ |
-| Title:   | bloxberg Consensus Upgrade                                      |
+| Title:   | bloxberg Consensus Upgrade & Tokenomics                                     |
 | Owner(s):  |                                                            |
 | Author(s):  | James Lawton (lawton@mpdl.mpg.de)                       |
-| Status:  | ![Raw](http://rfc.unprotocols.org/spec:2/COSS/raw.svg) |
+| Status:  | ![Raw](https://raw.githubusercontent.com/unprotocols/rfc/master/2/raw.svg) |
 | Created: | 2020-06-09                                                   |
 | License: | BSD-2-Clause                                                 |
 
@@ -43,12 +43,11 @@ Bergs are governance tokens that used to secure bloxberg as well as vote on vari
 gBergs (suggestions for better name welcome) are elicited at a constant speed based on the amount of bergs held which are used for transaction costs on the bloxberg blockchain. The aim is to ensure that security is retained on bloxberg while still ensuring the cost of utilizing bloxberg is kept to a minimum, especially for scientific and research focused applications. Thus, by decoupling the cost of computation on bloxberg from regular Bergs, we will ensure that the use cases will be feasible well into the future.
 
 ### Bergs
-
 TBD: Economic modeling of bergs based on desired inflation rate, bergs on genesis, amount of gBergs desired to be elicited.
 TBD: Define initial supply, suggested 1 billion Bergs with a fixed rate of inflation for block rewards.
 ### gBergs (gas bergs)
-
 For this purpose, we can define the generation rate of gBergs. Let B be the amount of bergs in the system, t is time in terms of blocks validated, and b is generation speed. 
-Generation rate = b * B * t
+
+<img src="https://render.githubusercontent.com/render/math?math=\color{white}\large\gBerg generation = b * B * t"><br/>
 
 We can set b to a constant 5x10^-8 of gBergs per block which means if you had 10k Bergs, it would generate approximately 4.32 gBergs per 24 hours (https://docs.vechain.org/thor/learn/two-token-design.html).
